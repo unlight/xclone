@@ -1,9 +1,20 @@
-deepClone
+xclone
 ===
-```
-git clone https://github.com/unlight/node-package-starter
+Deep clone object. Supports:
+- Objects / Arrays
+- Primitives
+- Functions
+- Dates
+- RegExp
+
+USAGE
+---
+```ts
+import { xclone } from 'xclone';
+
+const clone = xclone(object)
 ```
 
 CHANGELOG
 ---
-See list of changes in [CHANGELOG.md](CHANGELOG.md)
+See [CHANGELOG](CHANGELOG.md)

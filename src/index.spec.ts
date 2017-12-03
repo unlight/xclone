@@ -7,35 +7,35 @@ it('smoke', () => {
 
 it('numbers', () => {
     const object = { a: 1 };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     deepEqual(result, object);
 });
 
 it('string', () => {
     const object = { a: 'a' };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     deepEqual(result, object);
 });
 
 it('primitives', () => {
     const object = { a: 1, b: true, b2: false, c: 'c', d: null, e: undefined };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     deepEqual(result, object);
 });
 
 it('deep primitives', () => {
     const object = { a: 2, x: { b: { c: true, c2: false, d: { e: null } } } };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     deepEqual(result, object);
 });
 
 it('functions', () => {
-    const object = { a: 1, f: function func() { return arguments[0] + 1 } };
-    const result = lib.deepClone(object);
+    const object = { a: 1, f: function func() { return arguments[0] + 1; } };
+    const result = lib.xclone(object);
     notEqual(result, object);
     ok(object.f.name === result.f.name);
     ok(object.f(1) === result.f(1));
@@ -45,7 +45,7 @@ it('functions', () => {
 
 it('regexp', () => {
     const object = { r: /^x$/i };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     notEqual(object.r, result.r);
     equal(object.r.toString(), result.r.toString());
@@ -53,7 +53,7 @@ it('regexp', () => {
 
 it('date', () => {
     const object = { d: new Date() };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     notEqual(object.d, result.d);
     equal(object.d.toString(), result.d.toString());
@@ -61,7 +61,7 @@ it('date', () => {
 
 it('array', () => {
     const object = { a: [{ x: 1 }, { x: 2 }] };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     notEqual(result.a, object.a);
     deepEqual(result, object);
@@ -69,7 +69,7 @@ it('array', () => {
 
 it('not a number', () => {
     const object = { a: NaN };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     notEqual(result.a, object.a);
     ok(isNaN(result.a));
@@ -77,7 +77,7 @@ it('not a number', () => {
 
 it.skip('map collection', () => {
     const object = { a: new Map([['one', 1]]) };
-    const result = lib.deepClone(object);
+    const result = lib.xclone(object);
     notEqual(result, object);
     notEqual(result.a, object.a);
     ok(result.a.size === 1);

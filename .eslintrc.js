@@ -49,5 +49,6 @@ module.exports = {
         "import/max-dependencies": [1, { "max": 10 }],
         "quotes": [1, "single", { "allowTemplateLiterals": true }],
         "semi": [1, "always"],
+        "unicorn/new-for-builtins": 0,
     }
 };
